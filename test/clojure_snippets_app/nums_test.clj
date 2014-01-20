@@ -18,3 +18,26 @@
       )
     )
   )
+
+(deftest factorial-test-normal-case
+  (testing "Failed factorial test"
+    (let [expected 24]
+      (is (= expected (clojure-snippets-app.nums/factorial 4) ))
+    )
+  )
+)
+
+(deftest factorial-test-value-of-one
+  (testing "Failed factorial test"
+    (let [expected 1]
+      (is (= expected (clojure-snippets-app.nums/factorial 1) ))
+      )
+  )
+ )
+
+(deftest factorial-test-negative-x
+  (testing "Failed factorial test"
+    (is (thrown? Throwable (clojure-snippets-app.nums/factorial -5)))
+  )
+)
+
