@@ -1,5 +1,6 @@
 (ns clojure-snippets-app.nums
-  (:gen-class ))
+  (require [clojure.string])
+  (:gen-class))
 
 (defn average [numbers]
   "Function which calculates the average of some numbers"
@@ -45,22 +46,47 @@
 
   (if (neg? x)
     (throw (Throwable. "Value of X cannot be negative for a factorial"))
-  )
+    )
 
-  (loop [ num   x
-          result_one   1
-        ]
+  (loop [num x
+         result_one 1
+         ]
     (if (= num 1)
       result_one
       (recur (dec num) (* result_one num))
+      )
     )
   )
-)
 
-
-
-
-(defn hello [name]
-  (println name)
+(defn print-last-name [{:keys [lname]}]
+  (println lname)
   )
+
+
+(defn list-comp [data]
+  (for [item (data)
+        :when (> 0 item)]
+    item
+    )
+  )
+
+
+(defn randomize-list [data]
+  (reduce #(+ % %2)
+    (map #(* % (rand 1)) data))
+  )
+
+
+(defn factorial [x accum]
+  (if (> x 0)
+    (recur (dec x) (+ accum (* x (dec x))))
+    accum))
+
+(defn factorial [initialY]
+  (loop [x initialY, accum 0]
+    (if (> x 0)
+      (recur (dec x) (+ accum (* x (dec x))))
+      accum)))
+
+
 

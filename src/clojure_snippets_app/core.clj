@@ -10,4 +10,7 @@
   [& args]
   (println "Hello, World!")
   (def x (clojure-snippets-app.nums/average 10))
-  (println x))
+  (def y (clojure-snippets-app.nums/factorial 10 0))
+  (println x)
+  (println y)
+  )
